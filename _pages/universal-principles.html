@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Universal Principles | Code Zen</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Universal Principles" />
+<meta name="author" content="Davi Guides" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Philosophy-driven coding standards for multiple languages, designed as a Claude Code plugin." />
+<meta property="og:description" content="Philosophy-driven coding standards for multiple languages, designed as a Claude Code plugin." />
+<meta property="og:site_name" content="Code Zen" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Universal Principles" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Davi Guides"},"description":"Philosophy-driven coding standards for multiple languages, designed as a Claude Code plugin.","headline":"Universal Principles","url":"/_pages/universal-principles.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css">
+  <link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Code Zen" />
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Code Zen</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/">Home</a><a class="page-link" href="/_pages/zen-of-python.html">Zen of Python Explained</a><a class="page-link" href="/_pages/universal-principles.html">Universal Principles</a><a class="page-link" href="/_pages/python-standards.html">Python Standards</a><a class="page-link" href="/_pages/why-code-zen.html">Why Code Zen</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Universal Principles</h1>
+  </header>
+
+  <div class="post-content">
+    <h2 id="language-agnostic-coding-standards">Language-Agnostic Coding Standards</h2>
+
+<p>These principles apply to <strong>any programming language</strong> and form the foundation of Code Zen philosophy.</p>
+
+<hr />
+
+<h2 id="fundamental-principles"><strong>Fundamental Principles</strong></h2>
+
+<h3 id="-universal-language"><strong>🌐 Universal Language</strong></h3>
+<ul>
+  <li>Write <strong>all code in English</strong> (variable names, functions, classes, comments, error messages)</li>
+  <li><strong>Rationale:</strong> Facilitates international collaboration and maintenance by different developers</li>
+</ul>
+
+<h3 id="-clarity-and-readability"><strong>📖 Clarity and Readability</strong></h3>
+<ul>
+  <li>Maintain <strong>clarity, readability, and single responsibility</strong> in every function/method</li>
+  <li><strong>Prioritize clarity over cleverness</strong> - code should tell a clear story</li>
+  <li><strong>Code is read more often than written</strong> - optimize for reading</li>
+</ul>
+
+<h3 id="-single-responsibility-principle"><strong>🎯 Single Responsibility Principle</strong></h3>
+<ul>
+  <li><strong>Each function/method should have a single responsibility</strong></li>
+  <li>If a function does more than one thing, <strong>extract sub-functions</strong> and call them</li>
+  <li><strong>Classes should have a single reason to change</strong></li>
+</ul>
+
+<hr />
+
+<h2 id="code-organization"><strong>Code Organization</strong></h2>
+
+<h3 id="-modular-structure-by-context"><strong>📚 Modular Structure by Context</strong></h3>
+<ul>
+  <li>Structure modules/files by <strong>business context</strong> or <strong>domain</strong></li>
+  <li>If a module grows too large or contains multiple actions, <strong>divide into sub-contexts</strong></li>
+  <li><strong>High cohesion within modules, low coupling between modules</strong></li>
+</ul>
+
+<h3 id="-narrative-organization-top-down-flow"><strong>🎼 Narrative Organization (Top-Down Flow)</strong></h3>
+<ul>
+  <li>In each module/file, <strong>define the main function first</strong>
+    <ul>
+      <li>This function should <strong>act as an index/roadmap</strong> (orchestration)</li>
+      <li>Should <strong>call helpers</strong> and contain <strong>minimal logic</strong></li>
+    </ul>
+  </li>
+  <li><strong>Order helper/auxiliary functions</strong> in the sequence they are called</li>
+  <li>Create a <strong>natural narrative flow</strong>: index → chapter → subtitle</li>
+</ul>
+
+<h4 id="conceptual-example"><strong>Conceptual Example:</strong></h4>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>main_function()          # Orchestration - "what"
+  ├─ step_1()            # First step
+  ├─ step_2()            # Second step
+  └─ step_3()            # Third step
+      ├─ substep_3a()    # Details of third step
+      └─ substep_3b()    # More details
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="project-architecture"><strong>Project Architecture</strong></h2>
+
+<h3 id="-main-entry-point"><strong>🚪 Main Entry Point</strong></h3>
+<ul>
+  <li>Always include a <strong>clear main entry point</strong>:
+    <ul>
+      <li><code class="language-plaintext highlighter-rouge">main.py</code> (Python)</li>
+      <li><code class="language-plaintext highlighter-rouge">index.js</code> (Node.js)</li>
+      <li><code class="language-plaintext highlighter-rouge">main.go</code> (Go)</li>
+      <li><code class="language-plaintext highlighter-rouge">Program.cs</code> (C#)</li>
+      <li>etc.</li>
+    </ul>
+  </li>
+</ul>
+
+<h3 id="️-multiple-cohesive-modules"><strong>🏗️ Multiple Cohesive Modules</strong></h3>
+<ul>
+  <li><strong>Organize code into multiple files/modules</strong> cohesively</li>
+  <li>Avoid excessive accumulation in a single file</li>
+  <li><strong>Divide by responsibilities</strong>, not by technical types</li>
+</ul>
+
+<h3 id="-extensible-architecture"><strong>🔮 Extensible Architecture</strong></h3>
+<ul>
+  <li>Structure the project to be <strong>easy to extend in the future</strong></li>
+  <li>Allow adding new features without causing <strong>significant breaks</strong></li>
+  <li><strong>Design for change</strong> - anticipate that requirements will change</li>
+</ul>
+
+<hr />
+
+<h2 id="code-quality"><strong>Code Quality</strong></h2>
+
+<h3 id="-avoid-magic-values"><strong>🔢 Avoid Magic Values</strong></h3>
+<ul>
+  <li><strong>Never use “magic” numbers/strings</strong> directly in code</li>
+  <li>Prefer <strong>named constants</strong> or <strong>configuration files</strong></li>
+  <li><strong>Make intentions explicit</strong> through descriptive names</li>
+</ul>
+
+<h4 id="example"><strong>Example:</strong></h4>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// ❌ MAGIC VALUE</span>
+<span class="k">if </span><span class="p">(</span><span class="nx">attempts</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">)</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
+
+<span class="c1">// ✅ NAMED CONSTANT</span>
+<span class="kd">const</span> <span class="nx">MAX_RETRY_ATTEMPTS</span> <span class="o">=</span> <span class="mi">3</span><span class="p">;</span>
+<span class="k">if </span><span class="p">(</span><span class="nx">attempts</span> <span class="o">&gt;</span> <span class="nx">MAX_RETRY_ATTEMPTS</span><span class="p">)</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="-strategic-comments"><strong>💬 Strategic Comments</strong></h3>
+<ul>
+  <li><strong>Targeted comments</strong> are allowed when necessary</li>
+  <li>Always <strong>in English</strong> and well-formatted</li>
+  <li><strong>Explain the “why”, not the “what”</strong></li>
+  <li>Prefer <strong>self-documenting code</strong> over excessive comments</li>
+</ul>
+
+<h3 id="-consistent-formatting"><strong>📏 Consistent Formatting</strong></h3>
+<ul>
+  <li>Use <strong>automatic formatting tools</strong> for the language:
+    <ul>
+      <li><strong>Prettier</strong> (JavaScript/TypeScript)</li>
+      <li><strong>Black/Ruff</strong> (Python)</li>
+      <li><strong>gofmt</strong> (Go)</li>
+      <li><strong>rustfmt</strong> (Rust)</li>
+    </ul>
+  </li>
+  <li>Maintain <strong>reasonable line limits</strong> (80-100 characters)</li>
+</ul>
+
+<hr />
+
+<h2 id="error-handling"><strong>Error Handling</strong></h2>
+
+<h3 id="-explicit-errors"><strong>🚨 Explicit Errors</strong></h3>
+<ul>
+  <li><strong>Errors should never pass silently</strong></li>
+  <li>Make <strong>failures obvious</strong> so they can be fixed</li>
+  <li>Use the language’s <strong>exception/error system</strong> appropriately</li>
+</ul>
+
+<h3 id="-context-in-errors"><strong>📝 Context in Errors</strong></h3>
+<ul>
+  <li><strong>Include sufficient context</strong> in error messages</li>
+  <li>Facilitate <strong>debugging</strong> with relevant information</li>
+  <li><strong>Log errors</strong> with appropriate severity</li>
+</ul>
+
+<hr />
+
+<h2 id="design-principles"><strong>Design Principles</strong></h2>
+
+<h3 id="-dry-dont-repeat-yourself"><strong>🔄 DRY (Don’t Repeat Yourself)</strong></h3>
+<ul>
+  <li><strong>Avoid logic duplication</strong></li>
+  <li>Extract common code into <strong>reusable functions/modules</strong></li>
+  <li><strong>One source of truth</strong> for each concept</li>
+</ul>
+
+<h3 id="-kiss-keep-it-simple-stupid"><strong>💎 KISS (Keep It Simple, Stupid)</strong></h3>
+<ul>
+  <li><strong>Prefer simple solutions</strong> over complex ones</li>
+  <li><strong>Complexity must be justified</strong> by real necessity</li>
+  <li><strong>Avoid over-engineering</strong> for uncertain future requirements</li>
+</ul>
+
+<h3 id="-yagni-you-arent-gonna-need-it"><strong>📐 YAGNI (You Aren’t Gonna Need It)</strong></h3>
+<ul>
+  <li><strong>Implement only what is needed now</strong></li>
+  <li>Don’t add features “just in case”</li>
+  <li><strong>Refactor when the need arises</strong></li>
+</ul>
+
+<hr />
+
+<h2 id="documentation-and-versioning"><strong>Documentation and Versioning</strong></h2>
+
+<h3 id="-essential-documentation"><strong>📚 Essential Documentation</strong></h3>
+<ul>
+  <li><strong>README</strong> with setup and usage instructions</li>
+  <li><strong>API documentation</strong> for public interfaces</li>
+  <li><strong>Code comments</strong> when logic is complex</li>
+</ul>
+
+<h3 id="-explicit-configuration"><strong>🔧 Explicit Configuration</strong></h3>
+<ul>
+  <li><strong>Externalize configurations</strong> (environment variables, config files)</li>
+  <li><strong>Don’t hardcode</strong> environment-specific values</li>
+  <li><strong>Document</strong> all necessary configurations</li>
+</ul>
+
+<hr />
+
+<h2 id="universal-application"><strong>Universal Application</strong></h2>
+
+<p>These principles apply to <strong>any programming language</strong> and should be followed regardless of the technology chosen.</p>
+
+<h3 id="application-hierarchy"><strong>Application Hierarchy:</strong></h3>
+<ol>
+  <li><strong>General principles</strong> (this document) - fundamental philosophy</li>
+  <li><strong>Language-specific rules</strong> - technical implementation</li>
+  <li><strong>Libraries and tools</strong> - specific choices</li>
+  <li><strong>Formatting tools</strong> - automated style</li>
+</ol>
+
+<hr />
+
+<h2 id="key-takeaways"><strong>Key Takeaways</strong></h2>
+
+<ul>
+  <li><strong>Clarity over cleverness</strong> - Always prioritize understandable code</li>
+  <li><strong>Single responsibility</strong> - Each component does one thing well</li>
+  <li><strong>Explicit over implicit</strong> - Make intentions obvious</li>
+  <li><strong>Design for change</strong> - Anticipate evolution</li>
+  <li><strong>Fail loudly</strong> - Errors should be visible and actionable</li>
+</ul>
+
+<p>These universal principles form the foundation that language-specific guidelines build upon.</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Davi Guides</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Philosophy-driven coding standards for multiple languages, designed as a Claude Code plugin.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+
+</html>

@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Full Specification | Code Zen</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Full Specification" />
+<meta name="author" content="Davi Guides" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Philosophy-driven coding standards for multiple languages, designed as a Claude Code plugin." />
+<meta property="og:description" content="Philosophy-driven coding standards for multiple languages, designed as a Claude Code plugin." />
+<meta property="og:site_name" content="Code Zen" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Full Specification" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Davi Guides"},"description":"Philosophy-driven coding standards for multiple languages, designed as a Claude Code plugin.","headline":"Full Specification","url":"/_pages/semantic_docstrings.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css">
+  <link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Code Zen" />
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Code Zen</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/">Home</a><a class="page-link" href="/_pages/zen-of-python.html">Zen of Python Explained</a><a class="page-link" href="/_pages/universal-principles.html">Universal Principles</a><a class="page-link" href="/_pages/python-standards.html">Python Standards</a><a class="page-link" href="/_pages/why-code-zen.html">Why Code Zen</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Full Specification</h1>
+  </header>
+
+  <div class="post-content">
+    <h3 id="tldr">TL;DR:</h3>
+<ul>
+  <li><strong>What it is:</strong> An <strong>extension</strong> of Google Style that adds the <strong>“why”</strong> (purpose, context) to the existing <strong>“what”</strong> (parameters, returns).</li>
+  <li><strong>How it works:</strong> It adds <strong>keywords</strong> like <code class="language-plaintext highlighter-rouge">Responsibility</code>, <code class="language-plaintext highlighter-rouge">Architecture</code>, and <code class="language-plaintext highlighter-rouge">Boundaries</code> to define the code’s strategic role in the system.</li>
+  <li><strong>Why it matters:</strong> The result is code that’s <strong>easier to maintain</strong>, has clear architectural boundaries, and is better understood by both <strong>developers and LLMs</strong>.</li>
+</ul>
+
+<h3 id="semantic-docstrings-writing-code-that-explains-the-why">Semantic Docstrings: Writing Code That Explains the ‘Why’</h3>
+
+<p><strong>The Zen of Python reminds us: “Readability counts.”</strong></p>
+
+<h4 id="from-what-to-why-extending-the-google-style">From ‘What’ to ‘Why’: Extending the Google Style</h4>
+
+<p>Many developers are already familiar with and use established documentation standards, such as <strong>Google Style Docstrings</strong>. This standard is excellent for standardizing the description of technical elements like arguments (<code class="language-plaintext highlighter-rouge">Args</code>), returns (<code class="language-plaintext highlighter-rouge">Returns</code>), and exceptions (<code class="language-plaintext highlighter-rouge">Raises</code>), ensuring a fundamental consistency about <em>what</em> a function does mechanically.</p>
+
+<p>However, its structure, by itself, primarily answers “what” and “how.” The fundamental question that often remains unanswered is <strong>“why”</strong>: Why does this module exist in the architecture? What is the single responsibility of this class? In what context should this function be called?</p>
+
+<p>It is precisely this gap that the <strong>Semantic Docstrings</strong> approach aims to fill. It does not replace, but rather <strong>extends</strong> the Google Style by adding a vocabulary of semantic keys like <code class="language-plaintext highlighter-rouge">Architecture</code>, <code class="language-plaintext highlighter-rouge">Responsibility</code>, <code class="language-plaintext highlighter-rouge">Boundaries</code>, <code class="language-plaintext highlighter-rouge">Context</code>, and <code class="language-plaintext highlighter-rouge">Role</code>. These keys encourage us to document the architectural intent and strategic purpose of the code, creating a layer of meaning that goes beyond technical description.</p>
+
+<h4 id="the-essence">The Essence</h4>
+
+<p>Docstrings add a <strong>layer of meaning</strong> that pure syntax cannot express. They explain the <strong>Responsibility</strong>, <strong>Context</strong>, and <strong>Intention</strong> behind the code, not just its implementation details.</p>
+
+<blockquote>
+  <p>The critical insight here is that docstrings are not just for guiding a new developer; they add a <strong>semantic layer</strong> that transcends syntax. Code without docstrings tells you <em>WHAT</em> it does, while code with semantic docstrings explains <em>WHY</em> it does it.</p>
+</blockquote>
+
+<hr />
+
+<h3 id="what-syntax-and-standard-styles-dont-always-express">What Syntax (and Standard Styles) Don’t Always Express</h3>
+
+<p>To illustrate the evolution of meaning in documentation, let’s analyze the same function in three stages: with only its syntax, then with a standard docstring (Google Style), and finally, enriched with a semantic docstring.</p>
+
+<h4 id="stage-1-syntax-only-the-mechanical-what"><strong>Stage 1: Syntax Only (The Mechanical ‘What’)</strong></h4>
+
+<p>At the most basic level, we have only the function’s signature, which describes the input and output data types.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ❌ SYNTAX ONLY
+</span><span class="k">def</span> <span class="nf">calculate_discount</span><span class="p">(</span><span class="n">user</span><span class="p">:</span> <span class="n">User</span><span class="p">,</span> <span class="n">amount</span><span class="p">:</span> <span class="n">Decimal</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Decimal</span><span class="p">:</span>
+    <span class="bp">...</span>
+</code></pre></div></div>
+
+<p>This declaration tells us that the function operates on a <code class="language-plaintext highlighter-rouge">User</code> and a <code class="language-plaintext highlighter-rouge">Decimal</code> to produce another <code class="language-plaintext highlighter-rouge">Decimal</code>. It answers “what” in terms of types but offers no clues about the business logic, or purpose. We know the “bricks,” but not the “blueprint.”</p>
+
+<h4 id="stage-2-adding-google-style-the-descriptive-what"><strong>Stage 2: Adding Google Style (The Descriptive ‘What’)</strong></h4>
+
+<p>The next level is to add a docstring following a standard like Google’s. This already represents a huge leap in readability.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># 🟡 SYNTAX + GOOGLE STYLE
+</span><span class="k">def</span> <span class="nf">calculate_discount</span><span class="p">(</span><span class="n">user</span><span class="p">:</span> <span class="n">User</span><span class="p">,</span> <span class="n">amount</span><span class="p">:</span> <span class="n">Decimal</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Decimal</span><span class="p">:</span>
+    <span class="sh">"""</span><span class="s">Calculates a discount based on user loyalty and purchase volume.
+
+    Args:
+        user: The user account to determine the loyalty tier.
+        amount: The purchase amount for the volume-based calculation.
+
+    Returns:
+        The final discount amount, capped at the maximum allowed.
+    </span><span class="sh">"""</span>
+    <span class="bp">...</span>
+</code></pre></div></div>
+
+<p>Here, we already understand what each parameter represents and what the return value means. The code becomes functionally understandable. We know <code class="language-plaintext highlighter-rouge">user</code> is for “loyalty” and <code class="language-plaintext highlighter-rouge">amount</code> is for “volume.” This is excellent documentation of the functional <em>what</em>.</p>
+
+<h4 id="stage-3-adding-the-semantic-layer-the-strategic-why"><strong>Stage 3: Adding the Semantic Layer (The Strategic ‘Why’)</strong></h4>
+
+<p>The final stage is to extend the Google Style with semantic keys to reveal the <strong>intention</strong> and <strong>architectural context</strong>.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ✅ SYNTAX + SEMANTIC DOCSTRINGS
+</span><span class="k">def</span> <span class="nf">calculate_discount</span><span class="p">(</span><span class="n">user</span><span class="p">:</span> <span class="n">User</span><span class="p">,</span> <span class="n">amount</span><span class="p">:</span> <span class="n">Decimal</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Decimal</span><span class="p">:</span>
+    <span class="sh">"""</span><span class="s">Calculates a discount based on user loyalty and purchase volume.
+
+    Responsibility:
+        To be the single source of truth for all business discount logic.
+        Centralizes rules to ensure consistency across the application.
+
+    Context:
+        This function is called during the checkout process before payment.
+        It assumes business rules for loyalty and volume are configured
+        externally and may change.
+
+    Args:
+        user: The user account to determine the loyalty tier.
+        amount: The purchase amount for the volume-based calculation.
+
+    Returns:
+        The final discount amount, capped at the maximum allowed.
+
+    Note:
+        The maximum discount is controlled by a global application setting
+        and this function will never exceed it.
+    </span><span class="sh">"""</span>
+    <span class="bp">...</span>
+</code></pre></div></div>
+
+<p>This final version reaches a new level of clarity. In addition to everything Google Style already offered, it now explains:</p>
+
+<ul>
+  <li><strong>Responsibility</strong>: The function’s strategic role is to be the <strong>single source of truth</strong> for discount logic.</li>
+  <li><strong>Context</strong>: It tells us <em>when</em> it’s called (during checkout) and under what <em>assumptions</em> it operates (externally configured rules).</li>
+  <li><strong>Note</strong>: It alerts us to an important external constraint (the maximum cap is a global setting).</li>
+</ul>
+
+<p>The semantic layer not only describes the function but also positions it within the system, explaining its purpose and its interactions with the rest of the application. The strategic “why” finally becomes explicit.</p>
+
+<hr />
+
+<h3 id="levels-of-meaning">Levels of Meaning</h3>
+
+<p>This approach applies to all layers of an application, from the architectural definition of a module to the details of a class or function.</p>
+
+<h4 id="modules-architectural-role"><strong>Modules: Architectural Role</strong></h4>
+
+<p>A module’s docstring should never be a mere repetition of its filename. It must declare its place and function within the system’s architecture.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ❌ REPEATS SYNTAX
+</span><span class="sh">"""</span><span class="s">Workflow module.</span><span class="sh">"""</span>
+
+<span class="c1"># ✅ ADDS ARCHITECTURAL MEANING
+</span><span class="sh">"""</span><span class="s">
+This module orchestrates the conversational flow for debt negotiation.
+
+Architecture:
+    Acts as the ORCHESTRATOR of the conversation flow.
+    Decides WHICH agent to use (identification vs negotiation)
+    and WHEN to transition between them.
+
+Responsibility:
+    Coordinate message flow across agents.
+
+Should:
+    - Receive and validate incoming messages from external sources
+    - Determine conversation state (identified vs unidentified user)
+    - Route messages to appropriate agent
+
+Boundaries:
+    - Do not create or configure agents (delegated to agent modules)
+    - Do not manage MCP connections or tools (delegated to helpers)
+    - Do not apply business rules (delegated to domain layer)
+
+Entry:
+    - process_message: Main public function called by API routes
+</span><span class="sh">"""</span>
+</code></pre></div></div>
+
+<p>The semantics here explain <strong>WHY</strong> the module exists (acting as an “orchestrator”), <strong>WHAT</strong> its role in the architecture is, its conceptual <strong>BOUNDARIES</strong> (what it should do vs. what it delegates), and its public <strong>ENTRY</strong> points.</p>
+
+<h4 id="functions-context-and-intention"><strong>Functions: Context and Intention</strong></h4>
+
+<p>For functions, the docstring goes beyond a basic description, providing operational context and the intent behind its interface.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ❌ REPEATS SYNTAX
+</span><span class="k">def</span> <span class="nf">_validate_and_extract_payload</span><span class="p">(</span><span class="n">payload</span><span class="p">:</span> <span class="nb">dict</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span> <span class="o">|</span> <span class="bp">None</span><span class="p">,</span> <span class="nb">str</span> <span class="o">|</span> <span class="bp">None</span><span class="p">]:</span>
+    <span class="sh">"""</span><span class="s">Validates payload and extracts data.</span><span class="sh">"""</span>
+    <span class="bp">...</span>
+
+<span class="c1"># ✅ ADDS CONTEXT AND INTENTION
+</span><span class="k">def</span> <span class="nf">_validate_and_extract_payload</span><span class="p">(</span>
+    <span class="n">payload</span><span class="p">:</span> <span class="nb">dict</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">tuple</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="nb">str</span> <span class="o">|</span> <span class="bp">None</span><span class="p">,</span> <span class="nb">str</span> <span class="o">|</span> <span class="bp">None</span><span class="p">]:</span>
+    <span class="sh">"""</span><span class="s">
+    Validates incoming payload and extracts essential conversation data.
+
+    Responsibility:
+        First line of defense for data validation.
+        All subsequent processing assumes this contract.
+
+    Context:
+        Payload comes from an EXTERNAL SOURCE (WhatsApp API) and cannot be trusted.
+        Enforces contract: text is mandatory; session/user IDs optional.
+
+    Args:
+        payload: Dictionary from external API
+                 Expected structure: {</span><span class="sh">'</span><span class="s">text</span><span class="sh">'</span><span class="s">: str, </span><span class="sh">'</span><span class="s">chat_session_id</span><span class="sh">'</span><span class="s">?: str, </span><span class="sh">'</span><span class="s">chat_user_id</span><span class="sh">'</span><span class="s">?: str}
+
+    Returns:
+        (user_message, chat_session_id, chat_user_id)
+        - user_message: Always present
+        - session_id: None if anonymous
+        - user_id: None if anonymous
+
+    Raises:
+        ValueError: If </span><span class="sh">'</span><span class="s">text</span><span class="sh">'</span><span class="s"> is missing — caller MUST handle to return proper error
+    </span><span class="sh">"""</span>
+    <span class="bp">...</span>
+</code></pre></div></div>
+
+<p>Semantics add clarity about the function’s <strong>Responsibility</strong> (the architectural contract of being the “first line of defense”), its execution <strong>Context</strong> (the origin and trustworthiness of the data), the semantic meaning of its <strong>Return</strong> value, and the intent behind using <strong>Exceptions</strong>.</p>
+
+<h4 id="classes-boundaries-and-role-in-the-system"><strong>Classes: Boundaries and Role in the System</strong></h4>
+
+<p>A class represents an entity or concept in the system. Its docstring should clearly define its responsibility, its limits, and its role.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ❌ SYNTAX ONLY
+</span><span class="k">class</span> <span class="nc">IdentificationAgent</span><span class="p">:</span>
+    <span class="sh">"""</span><span class="s">Agent for user identification.</span><span class="sh">"""</span>
+
+<span class="c1"># ✅ SEMANTIC LAYER
+</span><span class="k">class</span> <span class="nc">IdentificationAgent</span><span class="p">:</span>
+    <span class="sh">"""</span><span class="s">
+    Manages user identification state and conversation flow.
+
+    Responsibility:
+        Maintain identification state across conversation turns.
+        Provide clear interface to check if user is identified and
+        retrieve credentials (CPF, account_uuid).
+
+    Boundaries:
+        Does NOT perform business logic — only manages conversation
+        state persistence.
+
+    Role:
+        State manager for user identification journey,
+        bridging stateless API calls and stateful context.
+    </span><span class="sh">"""</span>
+</code></pre></div></div>
+
+<p>The semantics explain the class’s <strong>Responsibility</strong> (following the Single Responsibility Principle), its <strong>Boundaries</strong> (clear limitations on what it does not do), and its architectural <strong>Role</strong> (acting as a “state manager”).</p>
+
+<hr />
+
+<h3 id="applied-pattern-complete-structure">Applied Pattern: Complete Structure</h3>
+
+<p>Below is a template that consolidates this approach, serving as a guide for consistently applying semantic docstrings across modules, classes, and functions.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="sh">"""</span><span class="s">
+[MODULE PURPOSE: 1–2 sentences explaining why this module exists]
+
+Architecture:
+    [What is this module’s primary role in system architecture?]
+
+Responsibility:
+    [Single overarching responsibility]
+
+Should:
+    - [Responsibility 1]
+    - [Responsibility 2]
+
+Boundaries:
+    - [Delegated responsibility]
+    - [Out of scope]
+
+Entry:
+    - [public_function: Brief description]
+</span><span class="sh">"""</span>
+
+<span class="k">class</span> <span class="nc">ExampleClass</span><span class="p">:</span>
+    <span class="sh">"""</span><span class="s">
+    [CLASS PURPOSE: 1–2 sentences]
+
+    Responsibility:
+        [What is this class’s single responsibility?]
+
+    Boundaries:
+        [What this class does NOT handle]
+
+    Role:
+        [Position of this class in the system]
+
+    Attributes:
+        attr1: [Meaning]
+        attr2: [Meaning]
+
+    Methods:
+        method1(): [What it does]
+    </span><span class="sh">"""</span>
+
+<span class="k">def</span> <span class="nf">public_function</span><span class="p">(</span><span class="n">arg1</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">arg2</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">bool</span><span class="p">:</span>
+    <span class="sh">"""</span><span class="s">
+    [One-line summary]
+
+    Responsibility:
+        [What is this function’s single responsibility?]
+
+    Context:
+        [Why it exists, when to call, assumptions]
+
+    Args:
+        arg1: [Why it exists / constraints]
+        arg2: [Why it exists / constraints]
+
+    Returns:
+        [Meaning of return value]
+
+    Raises:
+        ValueError: [Why it may be raised / what caller must do]
+
+    Note:
+        [Important details or gotchas]
+    </span><span class="sh">"""</span>
+</code></pre></div></div>
+
+<hr />
+
+<h3 id="why-does-this-matter">Why Does This Matter?</h3>
+
+<p>Adopting this practice brings benefits that go beyond simple documentation, impacting maintainability, collaboration, and integration with modern tools.</p>
+
+<h4 id="1-syntax--what--semantics--why">1. <strong>Syntax → WHAT | Semantics → WHY</strong></h4>
+
+<p>Syntax describes the operation, while semantics reveal the intention.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Syntax says WHAT:
+</span><span class="n">user</span><span class="p">:</span> <span class="n">User</span><span class="p">,</span> <span class="n">amount</span><span class="p">:</span> <span class="n">Decimal</span> <span class="o">-&gt;</span> <span class="n">Decimal</span>
+
+<span class="c1"># Semantics says WHY:
+</span><span class="n">user</span><span class="p">:</span> <span class="sh">"</span><span class="s">for loyalty tier determination</span><span class="sh">"</span>
+<span class="n">amount</span><span class="p">:</span> <span class="sh">"</span><span class="s">for volume-based calculation</span><span class="sh">"</span>
+<span class="k">return</span><span class="p">:</span> <span class="sh">"</span><span class="s">final discount with cap</span><span class="sh">"</span>
+</code></pre></div></div>
+
+<h4 id="2-code-changes-meaning-remains">2. <strong>Code Changes, Meaning Remains</strong></h4>
+
+<p>A function’s implementation can be refactored countless times, but its responsibility and intention rarely change. The docstring preserves this conceptual knowledge, ensuring that new developers (or LLMs) understand the purpose, not just the current implementation.</p>
+
+<h4 id="3-prevents-semantic-coupling">3. <strong>Prevents Semantic Coupling</strong></h4>
+
+<p>By defining clear boundaries, the docstring prevents a component’s responsibilities from bleeding into others.</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="sh">"""</span><span class="s">
+Boundaries:
+    - Manage MCP connections (delegated to execution helpers)
+</span><span class="sh">"""</span>
+</code></pre></div></div>
+
+<p>This establishes conceptual limits, not just technical ones, promoting a cleaner and more modular design.</p>
+
+<h4 id="4-llms-and-tools-understand-intention">4. <strong>LLMs and Tools Understand Intention</strong></h4>
+
+<p>Documentation rich in semantics feeds the development ecosystem. An IDE’s autocomplete displays context, not just type. Code reviews can focus on responsibility violations, and LLMs can generate code that is better aligned with the defined architecture and purpose.</p>
+
+<hr />
+
+<h3 id="comparison-syntax-vs-semantics">Comparison: Syntax vs. Semantics</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th style="text-align: left">Aspect</th>
+      <th style="text-align: left">Syntax Only</th>
+      <th style="text-align: left">With Semantic Layer</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td style="text-align: left"><strong>Module</strong></td>
+      <td style="text-align: left">Filename</td>
+      <td style="text-align: left">WHY it exists, WHAT its responsibility is</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Function</strong></td>
+      <td style="text-align: left">Signature (types)</td>
+      <td style="text-align: left">CONTEXT of args, INTENTION of return</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Class</strong></td>
+      <td style="text-align: left">Attributes/methods</td>
+      <td style="text-align: left">BOUNDARIES, ROLE in the system</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Arguments</strong></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">user: User</code></td>
+      <td style="text-align: left">“User account for loyalty tier determination”</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Return</strong></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">-&gt; Decimal</code></td>
+      <td style="text-align: left">“Final discount amount, capped at maximum”</td>
+    </tr>
+    <tr>
+      <td style="text-align: left"><strong>Exception</strong></td>
+      <td style="text-align: left"><code class="language-plaintext highlighter-rouge">raises ValueError</code></td>
+      <td style="text-align: left">“If ‘text’ is missing - caller MUST handle”</td>
+    </tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2 id="def-inshort---semantic-docstrings">def in(short) -&gt; Semantic Docstrings:</h2>
+
+<ul>
+  <li><strong>Preserves Intent &amp; Meaning:</strong> It documents the strategic “why” of the code, not just the mechanical “what.” This core meaning survives refactoring, unlike implementation details.</li>
+  <li><strong>Creates Architectural Clarity:</strong> It defines clear conceptual boundaries for each component, making the system self-explanatory and reducing the need for external documentation.</li>
+  <li><strong>Accelerates Collaboration:</strong> It speeds up onboarding for new developers, focuses code reviews on design principles, and dramatically improves the context for AI assistants (LLMs).</li>
+</ul>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Davi Guides</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Philosophy-driven coding standards for multiple languages, designed as a Claude Code plugin.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+
+</html>

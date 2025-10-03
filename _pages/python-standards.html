@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1"><!-- Begin Jekyll SEO tag v2.8.0 -->
+<title>Python Standards | Code Zen</title>
+<meta name="generator" content="Jekyll v4.4.1" />
+<meta property="og:title" content="Python Standards" />
+<meta name="author" content="Davi Guides" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Philosophy-driven coding standards for multiple languages, designed as a Claude Code plugin." />
+<meta property="og:description" content="Philosophy-driven coding standards for multiple languages, designed as a Claude Code plugin." />
+<meta property="og:site_name" content="Code Zen" />
+<meta property="og:type" content="website" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Python Standards" />
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"WebPage","author":{"@type":"Person","name":"Davi Guides"},"description":"Philosophy-driven coding standards for multiple languages, designed as a Claude Code plugin.","headline":"Python Standards","url":"/_pages/python-standards.html"}</script>
+<!-- End Jekyll SEO tag -->
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@latest/css/all.min.css">
+  <link rel="stylesheet" href="/assets/css/style.css"><link type="application/atom+xml" rel="alternate" href="/feed.xml" title="Code Zen" />
+</head>
+<body><header class="site-header">
+
+  <div class="wrapper"><a class="site-title" rel="author" href="/">Code Zen</a><nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.032C17.335,0,18,0.665,18,1.484L18,1.484z M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.032C17.335,6.031,18,6.696,18,7.516L18,7.516z M18,13.516C18,14.335,17.335,15,16.516,15H1.484 C0.665,15,0,14.335,0,13.516l0,0c0-0.82,0.665-1.483,1.484-1.483h15.032C17.335,12.031,18,12.695,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger"><a class="page-link" href="/">Home</a><a class="page-link" href="/_pages/zen-of-python.html">Zen of Python Explained</a><a class="page-link" href="/_pages/universal-principles.html">Universal Principles</a><a class="page-link" href="/_pages/python-standards.html">Python Standards</a><a class="page-link" href="/_pages/why-code-zen.html">Why Code Zen</a></div>
+      </nav></div>
+</header>
+<main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Python Standards</h1>
+  </header>
+
+  <div class="post-content">
+    <h2 id="python-specific-implementation-guide">Python-Specific Implementation Guide</h2>
+
+<p>Code Zen’s Python standards combine modern best practices with the timeless wisdom of the Zen of Python.</p>
+
+<hr />
+
+<h2 id="setup--tools"><strong>Setup &amp; Tools</strong></h2>
+
+<h3 id="python-version"><strong>Python Version</strong></h3>
+<ul>
+  <li><strong>Python ≥ 3.13</strong> (no <code class="language-plaintext highlighter-rouge">__future__</code> imports needed)</li>
+  <li>Use modern syntax and features</li>
+</ul>
+
+<h3 id="package-management"><strong>Package Management</strong></h3>
+<ul>
+  <li><strong>uv</strong> for dependencies (not pip/poetry)</li>
+  <li>Faster, more reliable dependency resolution</li>
+</ul>
+
+<h3 id="code-formatting"><strong>Code Formatting</strong></h3>
+<ul>
+  <li><strong>Ruff</strong> for formatting and linting</li>
+  <li><strong>80 columns maximum</strong> line length</li>
+  <li>Automatic formatting on save</li>
+</ul>
+
+<hr />
+
+<h2 id="type-system"><strong>Type System</strong></h2>
+
+<h3 id="type-hints-always"><strong>Type Hints Always</strong></h3>
+<ul>
+  <li><strong>Mandatory</strong> for all functions, classes, and variables when necessary</li>
+  <li>Use <strong>Python 3.13+ syntax</strong>: <code class="language-plaintext highlighter-rouge">list[str]</code> instead of <code class="language-plaintext highlighter-rouge">List[str]</code></li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ✅ GOOD
+</span><span class="k">def</span> <span class="nf">calculate_discount</span><span class="p">(</span>
+    <span class="n">user</span><span class="p">:</span> <span class="n">User</span><span class="p">,</span>
+    <span class="n">amount</span><span class="p">:</span> <span class="n">Decimal</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Decimal</span><span class="p">:</span>
+    <span class="bp">...</span>
+
+<span class="c1"># ❌ BAD
+</span><span class="k">def</span> <span class="nf">calculate_discount</span><span class="p">(</span><span class="n">user</span><span class="p">,</span> <span class="n">amount</span><span class="p">):</span>
+    <span class="bp">...</span>
+</code></pre></div></div>
+
+<h3 id="trailing-commas"><strong>Trailing Commas</strong></h3>
+<ul>
+  <li>Use trailing commas in signatures and calls</li>
+  <li>Improves diff readability</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ✅ GOOD
+</span><span class="k">def</span> <span class="nf">process_data</span><span class="p">(</span>
+    <span class="n">input_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
+    <span class="n">output_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
+    <span class="n">options</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">],</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="bp">...</span>
+
+<span class="c1"># ❌ BAD
+</span><span class="k">def</span> <span class="nf">process_data</span><span class="p">(</span><span class="n">input_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">output_dir</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span> <span class="n">options</span><span class="p">:</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">])</span> <span class="o">-&gt;</span> <span class="bp">None</span><span class="p">:</span>
+    <span class="bp">...</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="function-calls--style"><strong>Function Calls &amp; Style</strong></h2>
+
+<h3 id="keyword-arguments"><strong>Keyword Arguments</strong></h3>
+<ul>
+  <li>Use <strong>kwargs</strong> for multiple arguments</li>
+  <li>Improves readability and maintainability</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ✅ GOOD
+</span><span class="n">result</span> <span class="o">=</span> <span class="nf">calculate_discount</span><span class="p">(</span>
+    <span class="n">user</span><span class="o">=</span><span class="n">current_user</span><span class="p">,</span>
+    <span class="n">amount</span><span class="o">=</span><span class="n">purchase_total</span><span class="p">,</span>
+<span class="p">)</span>
+
+<span class="c1"># ❌ BAD
+</span><span class="n">result</span> <span class="o">=</span> <span class="nf">calculate_discount</span><span class="p">(</span><span class="n">current_user</span><span class="p">,</span> <span class="n">purchase_total</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="multiple-lines"><strong>Multiple Lines</strong></h3>
+<ul>
+  <li>Use <strong>multiple lines</strong> for more than 1 argument</li>
+  <li>Each argument on its own line</li>
+</ul>
+
+<h3 id="string-formatting"><strong>String Formatting</strong></h3>
+<ul>
+  <li><strong>f-strings always</strong> (not <code class="language-plaintext highlighter-rouge">%</code> or <code class="language-plaintext highlighter-rouge">.format()</code>)</li>
+  <li>Modern, readable, performant</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ✅ GOOD
+</span><span class="n">message</span> <span class="o">=</span> <span class="sa">f</span><span class="sh">"</span><span class="s">User </span><span class="si">{</span><span class="n">user</span><span class="p">.</span><span class="n">name</span><span class="si">}</span><span class="s"> purchased </span><span class="si">{</span><span class="n">amount</span><span class="si">}</span><span class="sh">"</span>
+
+<span class="c1"># ❌ BAD
+</span><span class="n">message</span> <span class="o">=</span> <span class="sh">"</span><span class="s">User %s purchased %s</span><span class="sh">"</span> <span class="o">%</span> <span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">amount</span><span class="p">)</span>
+<span class="n">message</span> <span class="o">=</span> <span class="sh">"</span><span class="s">User {} purchased {}</span><span class="sh">"</span><span class="p">.</span><span class="nf">format</span><span class="p">(</span><span class="n">user</span><span class="p">.</span><span class="n">name</span><span class="p">,</span> <span class="n">amount</span><span class="p">)</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="imports--organization"><strong>Imports &amp; Organization</strong></h2>
+
+<h3 id="path-handling"><strong>Path Handling</strong></h3>
+<ul>
+  <li><strong>pathlib</strong> instead of <code class="language-plaintext highlighter-rouge">os.path</code></li>
+  <li>Object-oriented, cross-platform</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ✅ GOOD
+</span><span class="kn">from</span> <span class="n">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">config_file</span> <span class="o">=</span> <span class="nc">Path</span><span class="p">(</span><span class="sh">"</span><span class="s">config</span><span class="sh">"</span><span class="p">)</span> <span class="o">/</span> <span class="sh">"</span><span class="s">settings.yaml</span><span class="sh">"</span>
+
+<span class="c1"># ❌ BAD
+</span><span class="kn">import</span> <span class="n">os</span>
+<span class="n">config_file</span> <span class="o">=</span> <span class="n">os</span><span class="p">.</span><span class="n">path</span><span class="p">.</span><span class="nf">join</span><span class="p">(</span><span class="sh">"</span><span class="s">config</span><span class="sh">"</span><span class="p">,</span> <span class="sh">"</span><span class="s">settings.yaml</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<h3 id="import-groups"><strong>Import Groups</strong></h3>
+<ul>
+  <li><strong>3 groups</strong>: stdlib, third-party, local</li>
+  <li><strong>Blank lines</strong> between groups</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># Standard library
+</span><span class="kn">from</span> <span class="n">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="n">typing</span> <span class="kn">import</span> <span class="n">Any</span>
+
+<span class="c1"># Third-party
+</span><span class="kn">from</span> <span class="n">fastapi</span> <span class="kn">import</span> <span class="n">FastAPI</span>
+<span class="kn">from</span> <span class="n">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
+
+<span class="c1"># Local
+</span><span class="kn">from</span> <span class="n">.models</span> <span class="kn">import</span> <span class="n">User</span>
+<span class="kn">from</span> <span class="n">.utils</span> <span class="kn">import</span> <span class="n">calculate_discount</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="package-structure"><strong>Package Structure</strong></h2>
+
+<h3 id="avoid-empty-__init__py"><strong>Avoid Empty <code class="language-plaintext highlighter-rouge">__init__.py</code></strong></h3>
+<ul>
+  <li>Not required since Python 3.3 (PEP 420)</li>
+  <li>Use only for <strong>aliases</strong> and <strong>explicit exports</strong></li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ✅ GOOD - With useful aliases
+</span><span class="kn">from</span> <span class="n">.module</span> <span class="kn">import</span> <span class="n">Class</span><span class="p">,</span> <span class="n">function</span>
+
+<span class="n">__all__</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="sh">"</span><span class="s">Class</span><span class="sh">"</span><span class="p">,</span>
+    <span class="sh">"</span><span class="s">function</span><span class="sh">"</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="c1"># ❌ BAD - Empty file
+# __init__.py (empty file)
+</span></code></pre></div></div>
+
+<hr />
+
+<h2 id="documentation--constants"><strong>Documentation &amp; Constants</strong></h2>
+
+<h3 id="docstrings-required"><strong>Docstrings Required</strong></h3>
+<ul>
+  <li><strong>Mandatory</strong> for modules, classes, functions</li>
+  <li>Follow Google Style extended with semantic layer</li>
+  <li><strong>≤ 80 columns</strong> with breaks when necessary</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">calculate_discount</span><span class="p">(</span>
+    <span class="n">user</span><span class="p">:</span> <span class="n">User</span><span class="p">,</span>
+    <span class="n">amount</span><span class="p">:</span> <span class="n">Decimal</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Decimal</span><span class="p">:</span>
+    <span class="sh">"""</span><span class="s">Calculate discount based on user loyalty and purchase volume.
+
+    Responsibility:
+        Single source of truth for business discount logic.
+
+    Context:
+        Called during checkout before payment processing.
+
+    Args:
+        user: User account for loyalty tier determination
+        amount: Purchase amount for volume-based calculation
+
+    Returns:
+        Final discount amount, capped at maximum allowed
+    </span><span class="sh">"""</span>
+</code></pre></div></div>
+
+<h3 id="avoid-magic-numbers"><strong>Avoid Magic Numbers</strong></h3>
+<ul>
+  <li>Use <strong>named constants</strong> or <strong>config files</strong></li>
+  <li>Make intentions explicit</li>
+</ul>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># ✅ GOOD
+</span><span class="n">MAX_DISCOUNT_RATE</span> <span class="o">=</span> <span class="mf">0.25</span>
+<span class="n">BULK_THRESHOLD</span> <span class="o">=</span> <span class="mi">1000</span>
+
+<span class="k">if</span> <span class="n">amount</span> <span class="o">&gt;</span> <span class="n">BULK_THRESHOLD</span><span class="p">:</span>
+    <span class="n">discount</span> <span class="o">=</span> <span class="n">amount</span> <span class="o">*</span> <span class="n">MAX_DISCOUNT_RATE</span>
+
+<span class="c1"># ❌ BAD
+</span><span class="k">if</span> <span class="n">amount</span> <span class="o">&gt;</span> <span class="mi">1000</span><span class="p">:</span>
+    <span class="n">discount</span> <span class="o">=</span> <span class="n">amount</span> <span class="o">*</span> <span class="mf">0.25</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="library-preferences"><strong>Library Preferences</strong></h2>
+
+<h3 id="cli--terminal"><strong>CLI &amp; Terminal</strong></h3>
+<ul>
+  <li><strong>typer</strong> - CLI with type hints (vs click/argparse)</li>
+  <li><strong>rich</strong> - Beautiful terminal output (vs plain print)</li>
+</ul>
+
+<h3 id="web--apis"><strong>Web &amp; APIs</strong></h3>
+<ul>
+  <li><strong>fastapi</strong> - Async APIs with type hints (vs flask/django)</li>
+</ul>
+
+<h3 id="data-validation--modeling"><strong>Data Validation &amp; Modeling</strong></h3>
+<ul>
+  <li><strong>pydantic</strong> - Validation, serialization, models</li>
+</ul>
+
+<h3 id="testing"><strong>Testing</strong></h3>
+<ul>
+  <li><strong>pytest</strong> - Testing framework</li>
+  <li><strong>Classes to group test suites</strong> - organization</li>
+</ul>
+
+<h3 id="data-processing"><strong>Data Processing</strong></h3>
+<ul>
+  <li><strong>polars</strong> - DataFrames (vs pandas - performance/lazy eval)</li>
+</ul>
+
+<h3 id="llm--ai"><strong>LLM &amp; AI</strong></h3>
+<ul>
+  <li><strong>litellm</strong> - Unified LLM APIs (vs openai direct)</li>
+</ul>
+
+<h3 id="database"><strong>Database</strong></h3>
+<ul>
+  <li><strong>motor</strong> - MongoDB async (vs pymongo sync)</li>
+</ul>
+
+<hr />
+
+<h2 id="integration-philosophy"><strong>Integration Philosophy</strong></h2>
+
+<h3 id="core-principles"><strong>Core Principles</strong></h3>
+<ul>
+  <li><strong>Async-first</strong> when it makes sense</li>
+  <li><strong>Type hints support</strong> mandatory</li>
+  <li><strong>Performance-focused</strong> when available</li>
+</ul>
+
+<h3 id="modern-python"><strong>Modern Python</strong></h3>
+<p>All standards are designed for <strong>Python 3.13+</strong>:</p>
+<ul>
+  <li>Pattern matching</li>
+  <li>Type parameter syntax</li>
+  <li>Improved error messages</li>
+  <li>Performance improvements</li>
+</ul>
+
+<hr />
+
+<h2 id="quick-reference-template"><strong>Quick Reference Template</strong></h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="sh">"""</span><span class="s">Module docstring explaining purpose.
+
+Architecture:
+    Role in system architecture
+
+Responsibility:
+    Main responsibility
+</span><span class="sh">"""</span>
+
+<span class="kn">from</span> <span class="n">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="n">typing</span> <span class="kn">import</span> <span class="n">Any</span>
+
+<span class="kn">from</span> <span class="n">fastapi</span> <span class="kn">import</span> <span class="n">FastAPI</span>
+<span class="kn">from</span> <span class="n">pydantic</span> <span class="kn">import</span> <span class="n">BaseModel</span>
+
+<span class="kn">from</span> <span class="n">.models</span> <span class="kn">import</span> <span class="n">User</span>
+
+
+<span class="n">MAX_RETRY_ATTEMPTS</span> <span class="o">=</span> <span class="mi">3</span>
+
+
+<span class="k">def</span> <span class="nf">process_user_data</span><span class="p">(</span>
+    <span class="n">user</span><span class="p">:</span> <span class="n">User</span><span class="p">,</span>
+    <span class="n">input_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">,</span>
+<span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+    <span class="sh">"""</span><span class="s">Process user data from file.
+
+    Responsibility:
+        Single source for user data processing logic.
+
+    Context:
+        Called during data import workflow.
+
+    Args:
+        user: User performing the import
+        input_file: Path to data file
+
+    Returns:
+        Dictionary with processed data
+
+    Raises:
+        ValueError: If input_file doesn</span><span class="sh">'</span><span class="s">t exist
+    </span><span class="sh">"""</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">input_file</span><span class="p">.</span><span class="nf">exists</span><span class="p">():</span>
+        <span class="k">raise</span> <span class="nc">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="sh">"</span><span class="s">File not found: </span><span class="si">{</span><span class="n">input_file</span><span class="si">}</span><span class="sh">"</span><span class="p">)</span>
+
+    <span class="c1"># Process data
+</span>    <span class="n">result</span> <span class="o">=</span> <span class="nf">_parse_file</span><span class="p">(</span><span class="n">input_file</span><span class="o">=</span><span class="n">input_file</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">result</span>
+
+
+<span class="k">def</span> <span class="nf">_parse_file</span><span class="p">(</span><span class="n">input_file</span><span class="p">:</span> <span class="n">Path</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+    <span class="sh">"""</span><span class="s">Parse input file (private helper).</span><span class="sh">"""</span>
+    <span class="c1"># Implementation
+</span>    <span class="bp">...</span>
+</code></pre></div></div>
+
+<hr />
+
+<h2 id="key-takeaways"><strong>Key Takeaways</strong></h2>
+
+<ul>
+  <li><strong>Type hints everywhere</strong> - No exceptions</li>
+  <li><strong>Modern syntax</strong> - Python 3.13+ features</li>
+  <li><strong>Explicit over implicit</strong> - kwargs, pathlib, f-strings</li>
+  <li><strong>Async-first</strong> - When it makes sense</li>
+  <li><strong>Performance-focused</strong> - polars, motor, litellm</li>
+  <li><strong>Documentation required</strong> - Semantic docstrings</li>
+</ul>
+
+<p>These standards ensure Python code is readable, maintainable, and optimized for both human developers and AI assistants.</p>
+
+  </div>
+
+</article>
+
+      </div>
+    </main><footer class="site-footer h-card">
+  <data class="u-url" href="/"></data>
+
+  <div class="wrapper">
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li class="p-name">Davi Guides</li></ul>
+      </div>
+
+      <div class="footer-col footer-col-2"><ul class="social-media-list"></ul>
+</div>
+
+      <div class="footer-col footer-col-3">
+        <p>Philosophy-driven coding standards for multiple languages, designed as a Claude Code plugin.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+</body>
+
+</html>
