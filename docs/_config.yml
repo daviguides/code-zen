@@ -23,10 +23,10 @@ include:
 
 header_pages:
   - index.md
+  - _pages/why-code-zen.md
   - _pages/zen-of-python.md
   - _pages/universal-principles.md
   - _pages/python-standards.md
-  - _pages/why-code-zen.md
 
 exclude: 
     - .gitignore
