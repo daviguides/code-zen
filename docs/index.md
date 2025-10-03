@@ -79,4 +79,4 @@ Code Zen is built on timeless software engineering principles, adapted for moder
 
 ---
 
-**Get Started:** [Install Code Zen](https://github.com/daviguides/code-zen) | [Read the Philosophy](/code-zen/zen-of-python.html)
+**Get Started:** [Install Code Zen](https://github.com/daviguides/code-zen) | [Read the Philosophy](/code-zen/_pages/zen-of-python.html)
