@@ -4,7 +4,7 @@ author: "Davi Guides"
 
 theme: minima
 
-# baseurl: "/code-zen"
+baseurl: "/code-zen"
 repository: daviguides/code-zen
 
 # Minima social links
