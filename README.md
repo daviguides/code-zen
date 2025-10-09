@@ -57,6 +57,10 @@ EOF
 
 ## Usage
 
+Code Zen can be used in two ways: as **automatic standards** via CLAUDE.md or as a **Claude Code plugin** with interactive commands.
+
+### Option 1: Automatic Standards (Recommended for Projects)
+
 Once installed globally, reference Code Zen in any project's `CLAUDE.md`:
 
 ```markdown
@@ -73,24 +77,83 @@ Once installed globally, reference Code Zen in any project's `CLAUDE.md`:
 
 See [claude-plug-in-sample.md](./claude-plug-in-sample.md) for detailed examples.
 
+### Option 2: Plugin Commands (Interactive Usage)
+
+Code Zen also provides interactive commands and specialized agents:
+
+#### Available Commands
+
+Load context for your session:
+```bash
+/load-zen-context        # Load Zen of Python principles
+/load-python-context     # Load Python-specific standards
+```
+
+Analyze and improve code:
+```bash
+/zen-check              # Check code compliance with Zen principles
+/zen-refactor           # Refactor code following Zen principles
+```
+
+#### Specialized Agents
+
+Code Zen includes agents that activate automatically:
+
+- **zen-reviewer** - Code review specialist focused on Zen principles
+- **python-zen-expert** - Python development specialist with modern best practices
+
+These agents provide context-aware assistance during development, code reviews, and refactoring.
+
+### Hybrid Approach (Best of Both)
+
+For maximum benefit, use both:
+
+1. **Global installation** for automatic standards in all projects
+2. **Plugin commands** for interactive checks and refactoring
+3. **Agents** for specialized assistance
+
+```bash
+# 1. Install standards globally
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/daviguides/code-zen/main/install.sh)"
+
+# 2. Use commands as needed
+/load-zen-context
+/zen-check
+/zen-refactor
+```
+
 ## Structure
 
 ```
-zen-code-standards/
-├── coding-standards.md       # Entry point
-├── universal/                # Language-agnostic principles
-│   ├── general_coding_principles.md
-│   └── project_setup_guidelines.md
-├── python/                   # Python-specific guidelines
-│   ├── python_quick_reference.md
-│   ├── python_library_preferences.md
-│   ├── tdd_optimized_guidelines.md
-│   └── zen_of_python/
-│       ├── zen_quick_reference.md
-│       ├── zen_guideline_llm.md
-│       └── zen_theory_explained.md
-└── other_rules/
-    └── file-references-guideline.md
+code-zen/
+├── .claude-plugin/
+│   └── plugin.json           # Plugin metadata
+├── commands/                 # Interactive commands
+│   ├── load-zen-context.md
+│   ├── load-python-context.md
+│   ├── zen-check.md
+│   └── zen-refactor.md
+├── agents/                   # Specialized agents
+│   ├── zen-reviewer.md
+│   └── python-zen-expert.md
+├── zen-code-standards/       # Standards library
+│   ├── coding-standards.md  # Entry point
+│   ├── universal/           # Language-agnostic principles
+│   │   ├── general_coding_principles.md
+│   │   └── project_setup_guidelines.md
+│   ├── python/              # Python-specific guidelines
+│   │   ├── python_quick_reference.md
+│   │   ├── python_library_preferences.md
+│   │   ├── tdd_optimized_guidelines.md
+│   │   └── zen_of_python/
+│   │       ├── zen_quick_reference.md
+│   │       ├── zen_guideline_llm.md
+│   │       └── zen_theory_explained.md
+│   └── other_rules/
+│       └── file-references-guideline.md
+├── docs/                     # Documentation site
+├── install.sh               # One-line installer
+└── README.md
 ```
 
 ## Supported Languages

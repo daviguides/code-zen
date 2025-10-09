@@ -2,7 +2,10 @@
   "name": "code-zen",
   "version": "1.0.0",
   "description": "Philosophy-driven coding standards with Zen of Python principles and best practices",
-  "author": "Davi Luiz de Andrade Guides",
+  "author": {
+      "name": "Davi Guides",
+      "url": "https://github.com/daviguides"
+  },
   "repository": "https://github.com/daviguides/code-zen",
   "license": "MIT"
 }
