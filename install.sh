@@ -13,7 +13,7 @@ NC='\033[0m' # No Color
 REPO_URL="https://github.com/daviguides/code-zen.git"
 TMP_DIR="/tmp/code-zen-$$"
 CLAUDE_DIR="$HOME/.claude"
-TARGET_DIR="$CLAUDE_DIR/zen-code-standards"
+TARGET_DIR="$CLAUDE_DIR/code-zen"
 CLAUDE_MD="$CLAUDE_DIR/CLAUDE.md"
 
 # Cleanup function
@@ -52,8 +52,8 @@ if [ ! -d "$CLAUDE_DIR" ]; then
     mkdir -p "$CLAUDE_DIR"
 fi
 
-# Copy zen-code-standards folder
-echo -e "${BLUE}Installing zen-code-standards to $TARGET_DIR...${NC}"
+# Install code-zen bundle (spec, context, prompts)
+echo -e "${BLUE}Installing Code Zen bundle to $TARGET_DIR...${NC}"
 if [ -d "$TARGET_DIR" ]; then
     read -p "Directory $TARGET_DIR already exists. Overwrite? (y/n) " -n 1 -r
     echo
@@ -65,8 +65,38 @@ if [ -d "$TARGET_DIR" ]; then
     fi
 fi
 
-cp -r "$TMP_DIR/zen-code-standards" "$TARGET_DIR"
-echo -e "${GREEN}✓ zen-code-standards installed successfully!${NC}\n"
+# Copy bundle contents (spec, context, prompts) to TARGET_DIR
+mkdir -p "$TARGET_DIR"
+if [ -d "$TMP_DIR/code-zen/spec" ]; then
+    cp -r "$TMP_DIR/code-zen/spec" "$TARGET_DIR/"
+    echo -e "${GREEN}✓ Copied spec/ (normative standards)${NC}"
+fi
+if [ -d "$TMP_DIR/code-zen/context" ]; then
+    cp -r "$TMP_DIR/code-zen/context" "$TARGET_DIR/"
+    echo -e "${GREEN}✓ Copied context/ (examples and guides)${NC}"
+fi
+if [ -d "$TMP_DIR/code-zen/prompts" ]; then
+    cp -r "$TMP_DIR/code-zen/prompts" "$TARGET_DIR/"
+    echo -e "${GREEN}✓ Copied prompts/ (workflows)${NC}"
+fi
+
+# Install commands globally
+COMMANDS_DIR="$CLAUDE_DIR/commands"
+if [ -d "$TMP_DIR/commands" ]; then
+    mkdir -p "$COMMANDS_DIR"
+    cp -r "$TMP_DIR/commands/"*.md "$COMMANDS_DIR/" 2>/dev/null || true
+    echo -e "${GREEN}✓ Installed commands globally${NC}"
+fi
+
+# Install agents globally
+AGENTS_DIR="$CLAUDE_DIR/agents"
+if [ -d "$TMP_DIR/agents" ]; then
+    mkdir -p "$AGENTS_DIR"
+    cp -r "$TMP_DIR/agents/"*.md "$AGENTS_DIR/" 2>/dev/null || true
+    echo -e "${GREEN}✓ Installed agents globally${NC}"
+fi
+
+echo -e "${GREEN}✓ Code Zen bundle installed successfully!${NC}\n"
 
 # Extract SAMPLE_CONFIG from claude-plug-in-sample.md
 echo -e "${BLUE}Reading configuration template...${NC}"
@@ -97,7 +127,7 @@ else
     echo
     if [[ $REPLY =~ ^[Yy]$ ]]; then
         # Check if already configured
-        if grep -q "zen-code-standards" "$CLAUDE_MD"; then
+        if grep -q "code-zen" "$CLAUDE_MD"; then
             echo -e "${YELLOW}Code Zen already configured in CLAUDE.md${NC}"
         else
             echo -e "\n\n$SAMPLE_CONFIG" >> "$CLAUDE_MD"
