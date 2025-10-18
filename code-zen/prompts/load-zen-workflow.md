@@ -2,43 +2,29 @@
 
 Apply Zen of Python principles throughout this session.
 
-## Core Principles
+## Core Zen Principles
 
-@../spec/principles/zen-principles-spec.md
+@~/.claude/code-zen/spec/principles/zen-principles-spec.md
 
-## Universal Standards
+## Zen Implementation Guidance
 
-@../spec/universal/naming-conventions-spec.md
-@../spec/universal/code-structure-spec.md
-@../spec/universal/error-handling-spec.md
+@~/.claude/code-zen/context/guides/zen-implementation-guide.md
 
-## Implementation Guidance
+## Zen Patterns and Templates
 
-@../context/guides/zen-implementation-guide.md
-
-## Practical Patterns
-
-@../context/examples/python-patterns.md
-@../context/examples/python-templates.md
-
-## Anti-Patterns to Avoid
-
-@../context/examples/python-anti-patterns.md
-
-## Pre-Code Validation
-
-@../context/checklists/pre-code-checklist.md
+@~/.claude/code-zen/context/examples/python-patterns.md
+@~/.claude/code-zen/context/examples/python-templates.md
 
 ## Workflow Instructions
 
 **Before generating code:**
-1. Review pre-code checklist from context
+1. Review pre-code checklist
 2. Identify implementation context (function/class/module/error/refactor)
 3. Consult decision matrix in zen-implementation-guide
 4. Choose appropriate template from python-templates
 
 **During code generation:**
-1. Apply naming conventions from spec
+1. Apply naming conventions
 2. Use guard clauses (flat > nested)
 3. Make all intentions explicit
 4. Handle errors explicitly (never silent)

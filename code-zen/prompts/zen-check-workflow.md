@@ -2,26 +2,14 @@
 
 Validate code against Zen of Python principles and coding standards.
 
-## Validation Checklists
+## Code Zen Standards Context
 
-@../context/checklists/review-checklist.md
-@../context/checklists/pre-code-checklist.md
+Antes de qualquer passo faça:
+- Execute o command /code-zen:load-universal-context
+- Execute o command /code-zen:load-zen-context
+- Execute o command /code-zen:load-python-context
 
-## Zen Principles Reference
-
-@../spec/principles/zen-principles-spec.md
-
-## Standards to Validate
-
-@../spec/python/python-language-spec.md
-@../spec/python/python-style-spec.md
-@../spec/universal/naming-conventions-spec.md
-@../spec/universal/code-structure-spec.md
-@../spec/universal/error-handling-spec.md
-
-## Anti-Patterns to Detect
-
-@../context/examples/python-anti-patterns.md
+---
 
 ## Validation Process
 

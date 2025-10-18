@@ -1,42 +1,25 @@
 # Load Python Standards Workflow
 
-Load complete Python coding standards and best practices for this session.
+Load Python-specific coding standards and best practices.
 
-## Language Specifications
+## Python Language Specifications
 
-@../spec/python/python-language-spec.md
-@../spec/python/python-style-spec.md
-@../spec/python/python-libraries-spec.md
+@~/.claude/code-zen/spec/python/python-language-spec.md
+@~/.claude/code-zen/spec/python/python-style-spec.md
+@~/.claude/code-zen/spec/python/python-libraries-spec.md
+@~/.claude/code-zen/spec/python/python-tdd-spec.md
 
-## Zen Principles
+## Python Quick Reference
 
-@../spec/principles/zen-principles-spec.md
+@~/.claude/code-zen/context/guides/python-quick-guide.md
 
-## Universal Standards
+## Python Code Resources
 
-@../spec/universal/naming-conventions-spec.md
-@../spec/universal/code-structure-spec.md
-@../spec/universal/error-handling-spec.md
+@~/.claude/code-zen/context/examples/python-templates.md
+@~/.claude/code-zen/context/examples/python-patterns.md
+@~/.claude/code-zen/context/examples/python-anti-patterns.md
 
-## Quick Reference
-
-@../context/guides/python-quick-guide.md
-
-## Code Templates
-
-@../context/examples/python-templates.md
-@../context/examples/python-patterns.md
-
-## Anti-Patterns
-
-@../context/examples/python-anti-patterns.md
-
-## Validation
-
-@../context/checklists/pre-code-checklist.md
-@../context/checklists/review-checklist.md
-
-## Key Requirements
+## Key Python Requirements
 
 **Python Version:**
 - Python ≥ 3.13 always

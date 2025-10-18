@@ -2,9 +2,16 @@
 
 Refactor code following Zen of Python principles and best practices.
 
-## Zen Principles for Refactoring
+## Code Zen Standards Context
 
-@../spec/principles/zen-principles-spec.md
+Antes de qualquer passo faça:
+- Execute o command /code-zen:load-universal-context
+- Execute o command /code-zen:load-zen-context
+- Execute o command /code-zen:load-python-context
+
+---
+
+## Zen Principles for Refactoring
 
 Focus on:
 - **Readability counts** - Make code more readable
@@ -12,26 +19,6 @@ Focus on:
 - **Simple > Complex** - Simplify unnecessary complexity
 - **Explicit > Implicit** - Make intentions clear
 - **Beautiful > Ugly** - Improve structure and formatting
-
-## Standards to Apply
-
-@../spec/python/python-language-spec.md
-@../spec/python/python-style-spec.md
-@../spec/universal/naming-conventions-spec.md
-@../spec/universal/code-structure-spec.md
-
-## Refactoring Patterns
-
-@../context/examples/python-patterns.md
-@../context/examples/python-templates.md
-
-## Anti-Patterns to Eliminate
-
-@../context/examples/python-anti-patterns.md
-
-## Implementation Guide
-
-@../context/guides/zen-implementation-guide.md
 
 ## Refactoring Process
 
