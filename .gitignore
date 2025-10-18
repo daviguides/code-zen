@@ -170,3 +170,6 @@ vendor/
 .DS_Store
 *.log
 _/
+
+# Makefile backup files
+*.md.bak

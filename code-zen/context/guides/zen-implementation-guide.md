@@ -277,13 +277,7 @@ def _apply_premium_discount(amount: Decimal) -> Decimal:
 
 ### When Principles Conflict
 
-Use this hierarchy:
-
-1. **Readability ALWAYS wins** - Never sacrifice legibility
-2. **Explicit > Implicit** - When there's ambiguity
-3. **Simple > Complex** - For simple problems
-4. **Practicality > Purity** - With clear documented benefit
-5. **Consistency > Cleverness** - In special cases
+@./code-zen/spec/principles/zen-principles-spec.md#conflict-resolution-hierarchy
 
 ### Example Conflicts
 

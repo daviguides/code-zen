@@ -92,23 +92,11 @@
 
 ## Red Flags - STOP If Found
 
-- 🚨 **"This is too clever"** → Violates Simple > Complex
-- 🚨 **"Only works if you know X"** → Violates Explicit > Implicit
-- 🚨 **"5+ levels of if/for"** → Violates Flat > Nested
-- 🚨 **"Line 120+ characters"** → Violates Sparse > Dense (80 max!)
-- 🚨 **"Can't explain how it works"** → Violates "Hard to explain = bad idea"
-- 🚨 **"Using default values with 'or'"** → Implicit behavior
-- 🚨 **"Bare except:"** → Silent errors
+@./code-zen/context/checklists/common-red-flags.md
 
 ## Conflict Resolution Hierarchy
 
-When Zen principles conflict, use this order:
-
-1. **Readability ALWAYS wins** - Never sacrifice legibility
-2. **Explicit > Implicit** - When there's ambiguity
-3. **Simple > Complex** - For simple problems
-4. **Practicality > Purity** - With clear documented benefit
-5. **Consistency > Cleverness** - In special cases
+@./code-zen/spec/principles/zen-principles-spec.md#conflict-resolution-hierarchy
 
 ## Context-Specific Considerations
 

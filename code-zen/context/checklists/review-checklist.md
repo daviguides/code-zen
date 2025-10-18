@@ -184,12 +184,7 @@
 
 ## Red Flags - Reject If Found
 
-- 🚨 **"This is too clever"** → Violates Simple > Complex
-- 🚨 **"Only works if you know X"** → Violates Explicit > Implicit
-- 🚨 **"5+ levels of if/for"** → Violates Flat > Nested
-- 🚨 **"Can't explain how it works"** → Violates "Hard to explain = bad"
-- 🚨 **"Bare except:"** → Silent errors
-- 🚨 **"Line > 80 chars"** → Style violation
+@./code-zen/context/checklists/common-red-flags.md
 
 ## Review Summary Template
 
